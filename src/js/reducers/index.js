@@ -2,7 +2,8 @@ import { ADD_ARTICLE, FOUND_BAD_WORD } from "../constants/action-types";
 
 const initialState = {
     articles:[],
-    message: ""
+    // message: ""
+    errors: ""
 }
 
 function rootReducer(state = initialState, action) {
@@ -11,16 +12,27 @@ function rootReducer(state = initialState, action) {
         return {
             ...state,
             articles: newState,
-            message: ""
+            // message: ""
+            errors: ""
         }
         
     }
-    else if(action.type === FOUND_BAD_WORD) {
+    // if(action.type === FOUND_BAD_WORD) {
+    //     return {
+    //         ...state,
+    //         message: action.message
+    //     }
+    // }
+    if (action.type === FOUND_BAD_WORD) {
+        console.log("error reducer run");
         return {
             ...state,
-            message: action.message
+            errors: `you cannot enter the word ${action.payload}`
         }
-    }
+        // return Object.assign({}, state, {
+        //   errors: `you cannot enter the word ${action.payload}`
+        // });
+      }
     return state;
 }
 
