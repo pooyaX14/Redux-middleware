@@ -16,6 +16,7 @@ export function forbiddenWordsMiddleware({dispatch}) {
             console.log(action)
             if(action.type === ADD_ARTICLE) {
                 const foundWord = forbiddenWords.filter((word) => action.payload.title.includes(word))
+                console.log(foundWord)
                 if(foundWord.length){
                     //Replaced FOUND_BAD_WORD action type with the foundBadWord action creator. Earlier it was 
                     // 1. return dispatch({type: FOUND_BAD_WORD, message: "This word not allowed"}) 

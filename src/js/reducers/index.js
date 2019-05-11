@@ -24,7 +24,8 @@ function rootReducer(state = initialState, action) {
     //     }
     // }
     if (action.type === FOUND_BAD_WORD) {
-        console.log("error reducer run");
+        // console.log("error reducer run");
+        // console.log(action.payload )
         return {
             ...state,
             errors: `you cannot enter the word ${action.payload}`

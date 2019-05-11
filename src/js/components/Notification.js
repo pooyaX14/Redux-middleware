@@ -2,16 +2,21 @@ import React from "react";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
-  console.log(state)
-  return { errors: state.errors };
+  console.log(state.errors)
+  return { err: state.errors };
 };
-
-const Notification = ({ errors }) => {
-  console.log({errors})
+// const mapDispatchToProps = ( dispatch ) => {
+//   return {
+//     name: "Purnima"
+//   } 
+// }
+const Notification = ({err}) => {
+  console.log({err})
+  // console.log({name})
 //  const message = errors.map((msg) =>  <p>{msg}</p> )
 return(
   <div>
-    {errors}
+   {err}
   </div>
 )};
 const NotificationList = connect(mapStateToProps)(Notification);

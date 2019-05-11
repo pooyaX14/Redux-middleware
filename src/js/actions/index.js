@@ -23,10 +23,10 @@ export function addArticle(payload) {
 // }
 
 export function foundBadWord(payload) {
-    console.log("foundbadword" + payload);
+    // console.log("foundbadword" + payload);
     return { 
         type: FOUND_BAD_WORD, 
-        payload: payload 
+        payload: payload
     };
 }
 
