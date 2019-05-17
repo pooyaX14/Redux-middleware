@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
-  console.log(state.errors)
+// console.log(state.errors)  
   return { err: state.errors };
 };
 // const mapDispatchToProps = ( dispatch ) => {
@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 //   } 
 // }
 const Notification = ({err}) => {
-  console.log({err})
+  // console.log({err})
   // console.log({name})
 //  const message = errors.map((msg) =>  <p>{msg}</p> )
 return(

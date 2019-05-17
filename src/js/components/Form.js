@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuidv1 from "uuid";
-import { addArticle, foundBadWord } from "../actions/index";
+import { addArticle } from "../actions/index";
 import NotificationList from "./Notification"
 
 function mapDispatchToProps(dispatch) {
@@ -15,25 +15,29 @@ class ConnectedForm extends Component {
   constructor() {
     super();
     this.state = {
-      title: ""
+      title: "",
+      id: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
-    // console.log(event.target);
+    console.log(event.target.id);
     this.setState({ [event.target.id]: event.target.value });
   }
   handleSubmit(event) {
     event.preventDefault();
-    // console.log(this.state)
+    console.log(this.state)
     const { title } = this.state;
     const id = uuidv1();
     this.props.addArticle({ title, id });
+    this.setState({
+      title: this.state.title,
+      id: id
+    })
     this.setState({ title: "" });
   }
   render() {
-    // console.log(this.state)
     const { title } = this.state;
     return (
       <div>

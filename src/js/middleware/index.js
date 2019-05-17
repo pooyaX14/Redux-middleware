@@ -1,5 +1,5 @@
 import { ADD_ARTICLE } from '../constants/action-types';
-import { foundBadWord } from '../actions'
+import { foundBadWord, getData } from '../actions'
 
 //Middleware is a function that is able to intercept an action (and do something with it) before it reaches the reducer
 //Middleware can hold the bulk of the appliation's logic
@@ -16,7 +16,7 @@ export function forbiddenWordsMiddleware({dispatch}) {
             console.log(action)
             if(action.type === ADD_ARTICLE) {
                 const foundWord = forbiddenWords.filter((word) => action.payload.title.includes(word))
-                console.log(foundWord)
+                // console.log(foundWord)
                 if(foundWord.length){
                     //Replaced FOUND_BAD_WORD action type with the foundBadWord action creator. Earlier it was 
                     // 1. return dispatch({type: FOUND_BAD_WORD, message: "This word not allowed"}) 
@@ -30,7 +30,17 @@ export function forbiddenWordsMiddleware({dispatch}) {
                 //     return dispatch(addArticle())
                 // }
             }
-            console.log(action)
+            // if(action.type === "DATA_LOADED") {
+            //     // return function(dispatch) {
+            //          fetch("https://jsonplaceholder.typicode.com/posts") //have to explicitly call dispatch inside the async function to dispatch the action
+            //           .then(response => response.json())
+            //           .then(json => {
+            //             dispatch(getData(json))
+            //             // console.log(json.slice(0,1));
+            //           });
+            //     //   };
+            // }
+            // console.log(action)
             return next(action)
             
         }

@@ -3,10 +3,12 @@ import { ADD_ARTICLE, FOUND_BAD_WORD } from "../constants/action-types";
 const initialState = {
     articles:[],
     // message: ""
-    errors: ""
+    errors: "",
+    remoteArticles:[]
 }
 
 function rootReducer(state = initialState, action) {
+    console.log(action)
     if(action.type === ADD_ARTICLE) {
         const newState = state.articles.concat(action.payload)
         return {
@@ -33,6 +35,21 @@ function rootReducer(state = initialState, action) {
         // return Object.assign({}, state, {
         //   errors: `you cannot enter the word ${action.payload}`
         // });
+      }
+      if(action.type === "DATA_LOADED") {
+        //   console.log(action.payload)
+          const apiData = state.remoteArticles.concat(action.payload)
+        console.log(apiData)
+          return {
+              ...state,
+              remoteArticles: apiData
+          }
+      }
+      if(action.type === "API_ERRORED") {
+          return {
+              ...state,
+              errors: action.payload
+          }
       }
     return state;
 }
